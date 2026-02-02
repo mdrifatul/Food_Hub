@@ -3,9 +3,8 @@ model Meal {
   title String? @db.VarChar(255)
   price Int
   authorId String
-
-  categoryId String?
-  category Category? @relation(fields: [categoryId],references: [id],onDelete: Cascade)
+  cuisine String?
+  dietaryPreferences String[]
 
   imageUrl String?
   isAvailable Boolean @default(true)
@@ -17,6 +16,5 @@ model Meal {
   
 
   @@index([authorId])
-  @@index([categoryId])
   @@map("meals")
 }

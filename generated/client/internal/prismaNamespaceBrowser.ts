@@ -56,7 +56,6 @@ export const ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
-  Category: 'Category',
   Meal: 'Meal',
   Order: 'Order',
   OrderItem: 'OrderItem',
@@ -154,23 +153,13 @@ export const VerificationScalarFieldEnum = {
 export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
-export const CategoryScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  slug: 'slug',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
-
-
 export const MealScalarFieldEnum = {
   id: 'id',
   title: 'title',
   price: 'price',
   authorId: 'authorId',
-  categoryId: 'categoryId',
+  cuisine: 'cuisine',
+  dietaryPreferences: 'dietaryPreferences',
   imageUrl: 'imageUrl',
   isAvailable: 'isAvailable',
   createdAt: 'createdAt',
