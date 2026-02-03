@@ -93,30 +93,30 @@ const getUserOrders = async (authorId: string) => {
   return orders;
 };
 
-// const getOrderById = async (orderId: string, authorId: string) => {
-//   const order = await prisma.order.findFirst({
-//     where: {
-//       id: orderId,
-//       authorId,
-//     },
-//     include: {
-//       items: {
-//         include: {
-//           meal: {
-//             select: {
-//               authorId: true,
-//               title: true,
-//               imageUrl: true,
-//               cuisine: true,
-//             },
-//           },
-//         },
-//       },
-//     },
-//   });
+const getOrderById = async (orderId: string, authorId: string) => {
+  const order = await prisma.order.findFirst({
+    where: {
+      id: orderId,
+      authorId,
+    },
+    include: {
+      items: {
+        include: {
+          meal: {
+            select: {
+              authorId: true,
+              title: true,
+              imageUrl: true,
+              cuisine: true,
+            },
+          },
+        },
+      },
+    },
+  });
 
-//   return order;
-// };
+  return order;
+};
 
 // const updateOrderStatus = async (orderId: string, status: OrderStatus) => {
 //   await prisma.order.findUniqueOrThrow({
@@ -143,6 +143,6 @@ const getUserOrders = async (authorId: string) => {
 export const OrderService = {
   createOrder,
   getUserOrders,
-  // getOrderById,
+  getOrderById,
   // updateOrderStatus,
 };

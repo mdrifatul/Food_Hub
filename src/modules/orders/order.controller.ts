@@ -45,30 +45,30 @@ const getUserOrders = async (
   }
 };
 
-// const getOrderById = async (
-//   req: Request,
-//   res: Response,
-//   next: NextFunction,
-// ) => {
-//   try {
-//     if (!req.user) {
-//       return res.status(401).json({
-//         success: false,
-//         message: "Unauthorized",
-//       });
-//     }
+const getOrderById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
+      });
+    }
 
-//     const { id } = req.params;
-//     const result = await OrderService.getOrderById(id as string, req.user.id);
+    const { id } = req.params;
+    const result = await OrderService.getOrderById(id as string, req.user.id);
 
-//     res.status(200).json({
-//       success: true,
-//       data: result,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+    res.status(200).json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // const updateOrderStatus = async (
 //   req: Request,
@@ -100,6 +100,6 @@ const getUserOrders = async (
 export const orderController = {
   createOrder,
   getUserOrders,
-  // getOrderById,
+  getOrderById,
   // updateOrderStatus,
 };
