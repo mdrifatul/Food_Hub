@@ -48,19 +48,19 @@ const getMealById = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-// const getMyMeal = async (req: Request, res: Response, next: NextFunction) => {
-//   try {
-//     if (!req.user) {
-//       return res.status(400).json({
-//         error: "Unauthorize!",
-//       });
-//     }
-//     const result = await mealService.getMyMeal(req.user.id);
-//     res.status(200).json(result);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+const getMyMeal = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    if (!req.user) {
+      return res.status(400).json({
+        error: "Unauthorize!",
+      });
+    }
+    const result = await mealService.getMyMeal(req.user.id);
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
 
 // const updateMeal = async (req: Request, res: Response, next: NextFunction) => {
 //   try {
@@ -107,7 +107,7 @@ export const mealController = {
   createMeal,
   getAllMeal,
   getMealById,
-  // getMyMeal,
+  getMyMeal,
   // updateMeal,
   // deleteMeal,
 };

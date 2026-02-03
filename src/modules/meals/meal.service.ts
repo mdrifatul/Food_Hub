@@ -1,4 +1,4 @@
-import { Meal } from "../../../generated/client/client";
+import { Meal, UserStatus } from "../../../generated/client/client";
 import { MealWhereInput } from "../../../generated/client/models";
 import { prisma } from "../../lib/prisma";
 
@@ -56,27 +56,27 @@ const getMealById = async (id: string) => {
   return result;
 };
 
-// const getMyMeal = async (authorId: string) => {
-//   await prisma.user.findUniqueOrThrow({
-//     where: {
-//       id: authorId,
-//       status: UserStatus.ACTIVE,
-//     },
-//     select: {
-//       id: true,
-//     },
-//   });
+const getMyMeal = async (authorId: string) => {
+  await prisma.user.findUniqueOrThrow({
+    where: {
+      id: authorId,
+      status: UserStatus.ACTIVE,
+    },
+    select: {
+      id: true,
+    },
+  });
 
-//   const result = await prisma.meal.findMany({
-//     where: {
-//       authorId,
-//     },
-//     orderBy: {
-//       createdAt: "desc",
-//     },
-//   });
-//   return result;
-// };
+  const result = await prisma.meal.findMany({
+    where: {
+      authorId,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return result;
+};
 
 // const updateMeal = async (
 //   mealId: string,
@@ -120,7 +120,7 @@ export const mealService = {
   createMeal,
   getAllMeal,
   getMealById,
-  // getMyMeal,
+  getMyMeal,
   // updateMeal,
   // deleteMeal,
 };
