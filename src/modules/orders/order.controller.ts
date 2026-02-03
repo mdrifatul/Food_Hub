@@ -22,28 +22,28 @@ const createOrder = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-// const getUserOrders = async (
-//   req: Request,
-//   res: Response,
-//   next: NextFunction,
-// ) => {
-//   try {
-//     if (!req.user) {
-//       return res
-//         .status(401)
-//         .json({ message: "Please login for get your orders" });
-//     }
+const getUserOrders = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    if (!req.user) {
+      return res
+        .status(401)
+        .json({ message: "Please login for get your orders" });
+    }
 
-//     const result = await OrderService.getUserOrders(req.user.id);
+    const result = await OrderService.getUserOrders(req.user.id);
 
-//     res.status(200).json({
-//       success: true,
-//       data: result,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+    res.status(200).json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // const getOrderById = async (
 //   req: Request,
@@ -99,7 +99,7 @@ const createOrder = async (req: Request, res: Response, next: NextFunction) => {
 
 export const orderController = {
   createOrder,
-  // getUserOrders,
+  getUserOrders,
   // getOrderById,
   // updateOrderStatus,
 };

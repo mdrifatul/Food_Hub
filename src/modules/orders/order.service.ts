@@ -70,28 +70,28 @@ const createOrder = async ({
   return order;
 };
 
-// const getUserOrders = async (authorId: string) => {
-//   const orders = await prisma.order.findMany({
-//     where: { authorId },
-//     include: {
-//       items: {
-//         include: {
-//           meal: {
-//             select: {
-//               title: true,
-//               imageUrl: true,
-//               cuisine: true,
-//             },
-//           },
-//         },
-//       },
-//     },
-//     orderBy: {
-//       createdAt: "desc",
-//     },
-//   });
-//   return orders;
-// };
+const getUserOrders = async (authorId: string) => {
+  const orders = await prisma.order.findMany({
+    where: { authorId },
+    include: {
+      items: {
+        include: {
+          meal: {
+            select: {
+              title: true,
+              imageUrl: true,
+              cuisine: true,
+            },
+          },
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return orders;
+};
 
 // const getOrderById = async (orderId: string, authorId: string) => {
 //   const order = await prisma.order.findFirst({
@@ -142,7 +142,7 @@ const createOrder = async ({
 
 export const OrderService = {
   createOrder,
-  // getUserOrders,
+  getUserOrders,
   // getOrderById,
   // updateOrderStatus,
 };
