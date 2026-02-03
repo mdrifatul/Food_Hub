@@ -2,6 +2,7 @@ import { toNodeHandler } from "better-auth/node";
 import cors from "cors";
 import express, { Application } from "express";
 import { auth } from "./lib/auth";
+import { categoryRouter } from "./modules/category/category.router";
 import { mealRouter } from "./modules/meals/meal.router";
 import { orderRouter } from "./modules/orders/order.router";
 import { providerRouter } from "./modules/provider/provider.router";
@@ -24,6 +25,7 @@ app.use("/api/providers", providerRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/reviews", ReviewRouter);
+app.use("/api/categories", categoryRouter);
 
 app.get("/", (req, res) => {
   res.send("Food Hub API is running");

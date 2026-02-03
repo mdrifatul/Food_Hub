@@ -6,6 +6,9 @@ model Meal {
   cuisine String?
   dietaryPreferences String[]
 
+  categoryId String?  
+  category Category? @relation(fields: [categoryId], references: [id], onDelete: Cascade)  
+
   imageUrl String?
   isAvailable Boolean @default(true)
   createdAt DateTime @default(now())
