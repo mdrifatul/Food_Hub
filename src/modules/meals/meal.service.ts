@@ -98,23 +98,23 @@ const updateMeal = async (
   return result;
 };
 
-// const deleteMeal = async (
-//   mealId: string,
-//   authorId: string,
-//   isProvider: boolean,
-// ) => {
-//   const existingMeal = await prisma.meal.findUniqueOrThrow({
-//     where: { id: mealId },
-//     select: { id: true, authorId: true },
-//   });
-//   if (isProvider && existingMeal.authorId !== authorId) {
-//     throw new Error("You are not authorized to delete this meal");
-//   }
-//   const result = await prisma.meal.delete({
-//     where: { id: mealId },
-//   });
-//   return result;
-// };
+const deleteMeal = async (
+  mealId: string,
+  authorId: string,
+  isProvider: boolean,
+) => {
+  const existingMeal = await prisma.meal.findUniqueOrThrow({
+    where: { id: mealId },
+    select: { id: true, authorId: true },
+  });
+  if (isProvider && existingMeal.authorId !== authorId) {
+    throw new Error("You are not authorized to delete this meal");
+  }
+  const result = await prisma.meal.delete({
+    where: { id: mealId },
+  });
+  return result;
+};
 
 export const mealService = {
   createMeal,
@@ -122,5 +122,5 @@ export const mealService = {
   getMealById,
   getMyMeal,
   updateMeal,
-  // deleteMeal,
+  deleteMeal,
 };
