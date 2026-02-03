@@ -5,6 +5,7 @@ import { auth } from "./lib/auth";
 import { mealRouter } from "./modules/meals/meal.router";
 import { orderRouter } from "./modules/orders/order.router";
 import { providerRouter } from "./modules/provider/provider.router";
+import { ReviewRouter } from "./modules/reivews/review.router";
 import { userRouter } from "./modules/users/user.router";
 
 const app: Application = express();
@@ -22,6 +23,7 @@ app.use("/api/meals", mealRouter);
 app.use("/api/providers", providerRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
+app.use("/api/reviews", ReviewRouter);
 
 app.get("/", (req, res) => {
   res.send("Food Hub API is running");
