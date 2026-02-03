@@ -38,15 +38,15 @@ const getAllMeal = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-// const getMealById = async (req: Request, res: Response, next: NextFunction) => {
-//   try {
-//     const { id } = req.params;
-//     const result = await mealService.getMealById(id as string);
-//     res.status(200).json(result);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+const getMealById = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const result = await mealService.getMealById(id as string);
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
 
 // const getMyMeal = async (req: Request, res: Response, next: NextFunction) => {
 //   try {
@@ -106,7 +106,7 @@ const getAllMeal = async (req: Request, res: Response, next: NextFunction) => {
 export const mealController = {
   createMeal,
   getAllMeal,
-  // getMealById,
+  getMealById,
   // getMyMeal,
   // updateMeal,
   // deleteMeal,

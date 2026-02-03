@@ -6,7 +6,7 @@ import { mealController } from "./meal.controller";
 const router = Router();
 
 router.get("/", mealController.getAllMeal);
-// router.get("/:id", mealController.getMealById);
+router.get("/:id", mealController.getMealById);
 // router.get(
 //   "/provider/my-posts",
 //   auth(UserRole.PROVIDER),

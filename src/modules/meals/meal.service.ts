@@ -49,12 +49,12 @@ const getAllMeal = async ({
   return result;
 };
 
-// const getMealById = async (id: string) => {
-//   const result = await prisma.meal.findUnique({
-//     where: { id },
-//   });
-//   return result;
-// };
+const getMealById = async (id: string) => {
+  const result = await prisma.meal.findUnique({
+    where: { id },
+  });
+  return result;
+};
 
 // const getMyMeal = async (authorId: string) => {
 //   await prisma.user.findUniqueOrThrow({
@@ -119,7 +119,7 @@ const getAllMeal = async ({
 export const mealService = {
   createMeal,
   getAllMeal,
-  // getMealById,
+  getMealById,
   // getMyMeal,
   // updateMeal,
   // deleteMeal,
