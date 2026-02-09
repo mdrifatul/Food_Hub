@@ -6,5 +6,6 @@ import { userController } from "./user.controller";
 const router = Router();
 
 router.get("/", auth(UserRole.ADMIN), userController.getUser);
-router.patch("/:id", auth(UserRole.ADMIN), userController.updateUser);
+router.patch("/:id", auth(UserRole.ADMIN, UserRole.PROVIDER,UserRole.USER), userController.updateUser);
+
 export const userRouter: Router = router;
