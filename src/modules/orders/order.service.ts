@@ -13,6 +13,7 @@ const createOrder = async ({
   items: {
     mealId: string;
     quantity: number;
+    authorId:string
   }[];
 }) => {
   const mealIds = items.map((item) => item.mealId);
@@ -37,6 +38,7 @@ const createOrder = async ({
       mealId: item.mealId,
       quantity: item.quantity,
       price: meal.price,
+      providerId:item.authorId
     };
   });
 

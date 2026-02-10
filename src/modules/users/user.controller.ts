@@ -12,7 +12,7 @@ const getUser = async (req: Request, res: Response, next: NextFunction) => {
 
 const updateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const isAdmin = req.user
+    const isAdmin = req?.user
     if (!isAdmin) {
       return res.status(403).json({ message: "Forbidden" });
     }
