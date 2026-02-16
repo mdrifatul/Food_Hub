@@ -12,7 +12,7 @@ import { userRouter } from "./modules/users/user.router";
 const app: Application = express();
 app.use(
   cors({
-    origin: process.env.APP_URL || "http://localhost:3000",
+    origin: process.env.APP_URL || "https://foodhub-client-nu.vercel.app",
     credentials: true,
   }),
 );

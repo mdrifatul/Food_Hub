@@ -19,12 +19,12 @@ async function seedAdmin() {
     }
 
     const adminSignUp = await fetch(
-      "http://localhost:5000/api/auth/sign-up/email",
+      "https://foodhub-server-gilt.vercel.app/api/auth/sign-up/email",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Origin: "http://localhost:3000",
+          Origin: "https://foodhub-client-nu.vercel.app",
         },
         body: JSON.stringify(adminData),
       },
